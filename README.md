@@ -38,7 +38,136 @@ public class Hello {
 >打印数组：
 >10 5 20 6 8 2 
 
-字节码分析：(todo)
+字节码分析：
+
+> javac Hello.java
+
+> javap -c Hello
+
+```cmake
+Compiled from "Hello.java"
+public class org.nero.interview.geektime.Hello {
+  public org.nero.interview.geektime.Hello();
+    Code:
+       0: aload_0   第0这个偏移位置加载到栈上来
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: iconst_1  将值为1的常量压入栈中
+       1: istore_1
+       2: iconst_5  将值为5的常量压入栈中
+       3: istore_2
+       4: iload_1   在局部变量表中索引位置为1的地方装载变量
+       5: iload_2   在局部变量表中索引位置为2的地方装载变量
+       6: if_icmpge     20  判断a是否小于b，如果小于跳转到位置20
+       9: getstatic     #2  获取2个字节的常量                // Field java/lang/System.out:Ljava/io/PrintStream;
+      12: ldc           #3  加载常量                // String a less than b
+      14: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      17: goto          28
+      20: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      23: ldc           #5                  // String a more than b
+      25: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      28: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      31: new           #6                  // class java/lang/StringBuilder
+      34: dup
+      35: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+      38: ldc           #8                  // String a * b =
+      40: invokevirtual #9                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      43: iload_1
+      44: iload_2
+      45: imul
+      46: invokevirtual #10                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      49: invokevirtual #11                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      52: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      55: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      58: new           #6                  // class java/lang/StringBuilder
+      61: dup
+      62: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+      65: ldc           #12                 // String a / b =
+      67: invokevirtual #9                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      70: iload_1
+      71: iload_2
+      72: idiv
+      73: invokevirtual #10                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      76: invokevirtual #11                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      79: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      82: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      85: new           #6                  // class java/lang/StringBuilder
+      88: dup
+      89: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+      92: ldc           #13                 // String a + b =
+      94: invokevirtual #9                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      97: iload_1
+      98: iload_2
+      99: iadd
+     100: invokevirtual #10                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     103: invokevirtual #11                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     106: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     109: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     112: new           #6                  // class java/lang/StringBuilder
+     115: dup
+     116: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+     119: ldc           #14                 // String b - a =
+     121: invokevirtual #9                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     124: iload_2
+     125: iload_1
+     126: isub
+     127: invokevirtual #10                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     130: invokevirtual #11                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     133: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     136: bipush        6     压入栈中6个字节值
+     138: newarray       int
+     140: dup
+     141: iconst_0
+     142: bipush        10
+     144: iastore
+     145: dup
+     146: iconst_1
+     147: iconst_5
+     148: iastore
+     149: dup
+     150: iconst_2
+     151: bipush        20
+     153: iastore
+     154: dup
+     155: iconst_3
+     156: bipush        6
+     158: iastore
+     159: dup
+     160: iconst_4
+     161: bipush        8
+     163: iastore
+     164: dup
+     165: iconst_5
+     166: iconst_2
+     167: iastore
+     168: astore_3
+     169: aload_3
+     170: arraylength
+     171: istore        4
+     173: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     176: ldc           #15                 // String 打印数组：
+     178: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     181: iconst_0
+     182: istore        5
+     184: iload         5
+     186: iload         4
+     188: if_icmpge     215
+     191: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     194: aload_3
+     195: iload         5
+     197: iaload
+     198: invokevirtual #16                 // Method java/io/PrintStream.print:(I)V
+     201: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     204: ldc           #17                 // String
+     206: invokevirtual #18                 // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+     209: iinc          5, 1
+     212: goto          184
+     215: return
+}
+```
 
 
 
