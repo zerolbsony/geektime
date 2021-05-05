@@ -216,7 +216,7 @@ public class HelloClassLoader extends ClassLoader {
 3.（必做）画一张图，展示Xmx、Xms、Xmn、Meta、DirectMemory、Xss这些内存参数的关系。
 
 文件：jvm配置关系图.png
-![jvm配置关系图](/jvm配置关系图.png)
+![jvm配置关系图](/geektime/jvm配置关系图.png)
 
 4.（选做）检查一下自己维护的业务系统的JVM参数配置，用jstat和jstack、jmap查看一下详情，并且自己独立分析一下大概情况，思考有没有不合理的地方，如何改进。
 
