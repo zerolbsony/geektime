@@ -15,3 +15,22 @@ homework
 /week2/._作业.md
 /.idea/
 /target/
+/week2/._cms GC分析EventDetails信息.png
+/week2/._cms GC分析GC暂停.png
+/week2/._cms GC分析内存使用.png
+/week2/._cms GC分析概括.png
+/week2/._G1 GC分析GC暂停.png
+/week2/._G1 GC分析内存使用.png
+/week2/._G1 GC分析概括.png
+/week2/._串行GC分析GC暂停.png
+/week2/._串行GC分析内存使用.png
+/week2/._串行GC分析概括.png
+/week2/._并发串行GC上传GCEasy的诊断图.pdf
+/week2/._并发串行GC分析EventDetails信息.png
+/week2/._并发串行GC分析GC暂停.png
+/week2/._并发串行GC分析内存使用.png
+/week2/._并发串行GC分析概括.png
+/week2/._并行GC分析EventDetails信息.png
+/week2/._并行GC分析GC暂停.png
+/week2/._并行GC分析内存使用.png
+/week2/._并行GC分析概括.png
