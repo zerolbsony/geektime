@@ -2,6 +2,7 @@ package com.nero.geektime.week5;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
@@ -24,6 +25,7 @@ public class Aop2 {
         System.out.println("after klass dong...");
     }
 
+    @Around("point()")
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("around begin klass dong");
         joinPoint.proceed();
