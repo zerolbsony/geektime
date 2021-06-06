@@ -25,10 +25,6 @@
             <list>
                 <ref bean="user100"/>
                 <ref bean="user123"/>
-                <!--                <bean class="io.kimmking.spring01.Student">-->
-                <!--                    <property name="name" value="qq" />-->
-                <!--                    <property name="id" value="001" /> -->
-                <!--                </bean>-->
             </list>
         </property>
     </bean>

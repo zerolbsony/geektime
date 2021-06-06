@@ -19,7 +19,7 @@ public class Company implements ICompany {
     @Override
     public void ding() {
 
-        System.out.println("Class1 have " + this.class1.getUsers().size() + " students and one is " + this.user100);
+        System.out.println("Class1 have " + this.class1.getUsers().size() + " users and one is " + this.user100);
 
     }
 
