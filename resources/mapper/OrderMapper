@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nero.geektime.week7.mapper.OrderMapper">
+
+    <resultMap type="com.nero.geektime.week7.entity.Order" id="EdgesAllMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="sourceId" column="source_id" jdbcType="VARCHAR"/>
+        <result property="sourceType" column="source_type" jdbcType="INTEGER"/>
+        <result property="sourceName" column="source_name" jdbcType="VARCHAR"/>
+        <result property="targetId" column="target_id" jdbcType="VARCHAR"/>
+        <result property="targetType" column="target_type" jdbcType="INTEGER"/>
+        <result property="targetName" column="target_name" jdbcType="VARCHAR"/>
+        <result property="direction" column="direction" jdbcType="INTEGER"/>
+        <result property="relation" column="relation" jdbcType="INTEGER"/>
+        <result property="property" column="property" jdbcType="VARCHAR"/>
+        <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="dataSource" column="data_source" jdbcType="INTEGER"/>
+        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="findEdges" resultMap="EdgesAllMap">
+        select source_id, source_type, source_name, target_id, target_type, target_name, direction, relation,
+        start_time, end_time, data_source
+        from edges_all
+        where
+        <foreach collection="collection" separator=" OR " open="(" item="item" close=")">
+            (source_id=concat(#{item.sourceId}) AND target_id=concat(#{item.targetId}))
+        </foreach>
+        AND deleted=0
+    </select>
+</mapper>
