@@ -1,33 +1,13 @@
 package com.nero.geektime.week7;
 
-import com.nero.geektime.week7.entity.Order;
-import com.nero.geektime.week7.service.impl.OrderServiceImpl;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableTransactionManagement(order = 10)
+//@EnableTransactionManagement(order = 10)
+@SpringBootApplication
 public class ReadWriteSeparationApplication {
+
     public static void main(String[] args) {
-        OrderServiceTest();
-
-    }
-
-    public static void OrderServiceTest() {
-        OrderServiceImpl orderService = new OrderServiceImpl();
-
-        //
-        Order order = new Order();
-        order.setOrderNo(1000002);
-        orderService.createOrder(order);
-
-        //
-        Order orderDetail = orderService.getOrder(1000001);
-        System.out.println("order is " + orderDetail.toString());
-
-        //
-        orderDetail.setOrderStatus(1);
-        orderDetail.setPayNo("NO001");
-        orderDetail.setPayId(1);
-        orderService.createOrder(order);
-
+        SpringApplication.run(ReadWriteSeparationApplication.class, args);
     }
 }
