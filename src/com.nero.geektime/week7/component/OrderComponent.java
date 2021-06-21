@@ -26,7 +26,7 @@ public class OrderComponent {
         orderDetail.setOrderStatus(1);
         orderDetail.setPayNo("NO001");
         orderDetail.setPayId(1);
-        orderService.createOrder(order);
+        orderService.updateOrder(order);
 
     }
 }
