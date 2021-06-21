@@ -1,0 +1,16 @@
+
+<!--自动创建sqlSessionFactory-->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!--构建sqlSession需要数据源-->
+    <property name="dataSource" ref="basicDataSource"></property>
+
+    <!--起别名   给该包下所有的类起别名，默认别名为该类的类名-->
+    <property name="typeAliasesPackage" ><value>com.baizhi.entity</value></property>
+
+    <!--mapper文件注册-->
+    <property name="mapperLocations">
+        <list><!--默认为com.baizhi.mapper包下面以Mapper.xml结尾的文件进行注册-->
+            <value>com/baizhi/mapper/*Mapper.xml</value>
+        </list>
+    </property>
+</bean>
