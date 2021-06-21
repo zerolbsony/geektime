@@ -1,10 +1,13 @@
+package com.nero.geektime;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.text.Format;
 import java.util.Formatter;
 import java.util.Random;
 
-class DBTest {
+public class DBTest {
 
     public static void batchInsert() {
         Class.forName("com.mysql.jdbc.Driver");
@@ -37,16 +40,27 @@ class DBTest {
         int payId = 1;
         int productAmount = 1000;
 
+        String sql = "insert into orders (order_no, order_status, user_id, pay_no, pay_id, product_amount, product_total_price) values (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pst = conn.prepareStatement(sql);
+
         Formatter f = new Formatter();
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            int row = stat.executeUpdate(f.format("insert into orders (order_no, order_status, user_id, pay_no, pay_id, product_amount, product_total_price) values (%d, %d, %d, '%s', %d, %d, %d)",
-                orderNo+i, 0, userId+i, '', payId+i, 1000*(Random().nextInt() * (10 - 1 + 1) + 1), 1000*(Random().nextInt() * (10 - 1 + 1) + 1)
-                ));
+            pst.setObject(1, orderNo+i);
+            pst.setObject(2, 0);
+            pst.setObject(3, userId+i);
+            pst.setObject(4, '');
+            pst.setObject(5, payId+i);
+            pst.setObject(6, 1000*(Random().nextInt() * (10 - 1 + 1) + 1));
+            pst.setObject(7, 1000*(Random().nextInt() * (10 - 1 + 1) + 1));
+            pst.addBatch();
         }
+        pst.executeBatch();
         long endTime = System.currentTimeMillis();
         System.out.println("cost time is "+endTime-startTime/1000+" seconds");
 
+        pst.close();
+        conn.close();
     }
 
     public static void main(String[] args) {

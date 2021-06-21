@@ -6,12 +6,48 @@ mysql:
     mapper-locations: classpath:/mapper/*.xml
     config-location: classpath:/mybatis-config.xml
     write:
-      url: jdbc:mysql://192.168.226.5:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://localhost:3306/my_mall?useUnicode=true&characterEncoding=utf-8&useSSL=true
       username: root
-      password: 123456
+      password: 12345678
       driver-class-name: com.mysql.jdbc.Driver
     read:
-      url: jdbc:mysql://192.168.226.6:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      url: jdbc:mysql://localhost:3307/my_mall?useUnicode=true&characterEncoding=utf-8&useSSL=true
       username: root
-      password: 123456
+      password: 12345678
       driver-class-name: com.mysql.jdbc.Driver
+spring:
+  shardingsphere:
+  # 数据源相关配置
+  datasource:
+    # 数据源名称
+    names: master,s1,s2
+    # MySQL master数据源
+    master:
+    # 数据库连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_mall? serverTimezone=UTC
+    username: root
+    password: 12345678
+  # 两个slave数据源
+  s1:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_mall?serverTimezone=UTC
+    username: root
+    password: 12345678
+  s2:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_mall? serverTimezone=UTC
+    username: root
+    password: 12345678
+    masterslave:
+    load-balance-algorithm-type: round_robin
+    name: ms
+    master-data-source-name: master
+    slave-data-source-names: s1,s2
+  # 其他属性
+  props:
+    # 开启SQL显示
+    sql.show: true
