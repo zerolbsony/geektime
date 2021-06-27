@@ -14,3 +14,5 @@
 ###### [第六周作业](https://github.com/zerolbsony/geektime/blob/main/week6/作业.md)
 
 ###### [第七周作业](https://github.com/zerolbsony/geektime/blob/main/week7/作业.md)
+
+###### [第八周作业](https://github.com/zerolbsony/geektime/blob/main/week8/作业.md)
