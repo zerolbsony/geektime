@@ -12,6 +12,7 @@ public class Order {
     private Integer userId;
     private String payNo;
     private Integer payId;
+    private Integer productId;
     private Integer productAmount;
     private Integer productTotalPrice;
     private Date created;
