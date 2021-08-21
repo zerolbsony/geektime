@@ -8,8 +8,7 @@ import javax.jms.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-//@SpringBootApplication
-public class ActivemqApplication {
+public class ActivemqJMSProducer {
 
     public static void main(String[] args) {
 
